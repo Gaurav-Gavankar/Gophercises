@@ -5,6 +5,7 @@ import (
 	"testing"
 
 	homedir "github.com/mitchellh/go-homedir"
+	"github.ibm.com/dash/dash_utils/dashtest"
 )
 
 func TestInitNegative(t *testing.T) {
@@ -89,4 +90,8 @@ func TestItob(t *testing.T) {
 
 func TestCloseDB(t *testing.T) {
 	CLoseDB()
+}
+
+func TestMain(m *testing.M) {
+	dashtest.ControlCoverage(m)
 }
