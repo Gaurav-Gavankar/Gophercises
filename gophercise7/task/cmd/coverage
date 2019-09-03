@@ -1,0 +1,25 @@
+mode: set
+gophercises/gophercise7/task/cmd/do.go:14.47,16.28 2 0
+gophercises/gophercise7/task/cmd/do.go:24.3,25.17 2 0
+gophercises/gophercise7/task/cmd/do.go:29.3,29.26 1 0
+gophercises/gophercise7/task/cmd/do.go:16.28,18.18 2 0
+gophercises/gophercise7/task/cmd/do.go:18.18,20.5 1 0
+gophercises/gophercise7/task/cmd/do.go:20.10,22.5 1 0
+gophercises/gophercise7/task/cmd/do.go:25.17,28.4 2 0
+gophercises/gophercise7/task/cmd/do.go:29.26,30.33 1 0
+gophercises/gophercise7/task/cmd/do.go:34.4,36.18 3 0
+gophercises/gophercise7/task/cmd/do.go:30.33,32.13 2 0
+gophercises/gophercise7/task/cmd/do.go:36.18,38.5 1 0
+gophercises/gophercise7/task/cmd/do.go:38.10,41.5 1 0
+gophercises/gophercise7/task/cmd/do.go:46.13,48.2 1 1
+gophercises/gophercise7/task/cmd/list.go:15.47,17.17 2 1
+gophercises/gophercise7/task/cmd/list.go:22.3,22.22 1 1
+gophercises/gophercise7/task/cmd/list.go:26.3,27.30 2 1
+gophercises/gophercise7/task/cmd/list.go:17.17,21.4 2 1
+gophercises/gophercise7/task/cmd/list.go:22.22,25.4 2 1
+gophercises/gophercise7/task/cmd/list.go:27.30,29.4 1 1
+gophercises/gophercise7/task/cmd/list.go:33.13,35.2 1 1
+gophercises/gophercise7/task/cmd/add.go:16.47,20.17 3 1
+gophercises/gophercise7/task/cmd/add.go:24.3,24.49 1 1
+gophercises/gophercise7/task/cmd/add.go:20.17,23.4 2 0
+gophercises/gophercise7/task/cmd/add.go:28.13,30.2 1 1

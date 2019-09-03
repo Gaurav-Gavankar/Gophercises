@@ -1,0 +1,9 @@
+building a projet
+go build -o .\secret .\cmd\main.go
+
+getting secret
+.\secret get twitter
+.\main.exe get twitter-key
+
+setting secret
+.\main.exe set twitter abcde

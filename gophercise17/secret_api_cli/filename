@@ -1,0 +1,22 @@
+mode: set
+gophercises/gophercise17/secret_api_cli/fileBackedVault.go:12.48,17.2 1 1
+gophercises/gophercise17/secret_api_cli/fileBackedVault.go:26.30,28.16 2 1
+gophercises/gophercise17/secret_api_cli/fileBackedVault.go:33.2,35.16 3 1
+gophercises/gophercise17/secret_api_cli/fileBackedVault.go:39.2,39.27 1 1
+gophercises/gophercise17/secret_api_cli/fileBackedVault.go:28.16,31.3 2 0
+gophercises/gophercise17/secret_api_cli/fileBackedVault.go:35.16,37.3 1 0
+gophercises/gophercise17/secret_api_cli/fileBackedVault.go:42.50,45.2 2 1
+gophercises/gophercise17/secret_api_cli/fileBackedVault.go:47.30,49.16 2 1
+gophercises/gophercise17/secret_api_cli/fileBackedVault.go:53.2,55.16 3 1
+gophercises/gophercise17/secret_api_cli/fileBackedVault.go:59.2,59.28 1 1
+gophercises/gophercise17/secret_api_cli/fileBackedVault.go:49.16,51.3 1 0
+gophercises/gophercise17/secret_api_cli/fileBackedVault.go:55.16,57.3 1 0
+gophercises/gophercise17/secret_api_cli/fileBackedVault.go:62.51,65.2 2 1
+gophercises/gophercise17/secret_api_cli/fileBackedVault.go:67.49,72.16 4 1
+gophercises/gophercise17/secret_api_cli/fileBackedVault.go:76.2,77.9 2 1
+gophercises/gophercise17/secret_api_cli/fileBackedVault.go:80.2,80.19 1 1
+gophercises/gophercise17/secret_api_cli/fileBackedVault.go:72.16,74.3 1 0
+gophercises/gophercise17/secret_api_cli/fileBackedVault.go:77.9,79.3 1 0
+gophercises/gophercise17/secret_api_cli/fileBackedVault.go:83.46,87.16 4 1
+gophercises/gophercise17/secret_api_cli/fileBackedVault.go:90.2,92.12 3 1
+gophercises/gophercise17/secret_api_cli/fileBackedVault.go:87.16,89.3 1 0
