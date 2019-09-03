@@ -5,6 +5,7 @@ import (
 	"testing"
 
 	"github.com/mitchellh/go-homedir"
+	"github.ibm.com/dash/dash_utils/dashtest"
 )
 
 func secretsPath() string {
@@ -58,4 +59,8 @@ func TestLoad(t *testing.T) {
 	encodingKey := "random-key"
 	v := File(encodingKey, "/")
 	v.load()
+}
+
+func TestMain(m *testing.M) {
+	dashtest.ControlCoverage(m)
 }

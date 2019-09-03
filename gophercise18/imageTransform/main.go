@@ -29,7 +29,7 @@ func main() {
 	mux.HandleFunc("/upload", uploadImage)
 	fs := http.FileServer(http.Dir("./img"))
 	mux.Handle("/img/", http.StripPrefix("/img", fs))
-	log.Fatal(ServeAndListenFunc("0.0.0.0:9000", mux))
+	log.Fatal(ServeAndListenFunc(":5000", mux))
 }
 
 func filePicker(w http.ResponseWriter, r *http.Request) {
@@ -48,6 +48,7 @@ func uploadImage(w http.ResponseWriter, r *http.Request) {
 	file, header, err := r.FormFile("image")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
+		fmt.Println("bad request")
 		return
 	}
 	defer file.Close()

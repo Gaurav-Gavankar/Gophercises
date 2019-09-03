@@ -6,6 +6,8 @@ import (
 	"io"
 	"os"
 	"testing"
+
+	"github.ibm.com/dash/dash_utils/dashtest"
 )
 
 func TestTransform(t *testing.T) {
@@ -90,4 +92,9 @@ func TestTempFileNegative(t *testing.T) {
 
 func TestPrimitive(t *testing.T) {
 	primitive("testInput.jpg", "testOutput.jpg", 10, "testArg")
+}
+
+//Master test
+func TestMain(m *testing.M) {
+	dashtest.ControlCoverage(m)
 }

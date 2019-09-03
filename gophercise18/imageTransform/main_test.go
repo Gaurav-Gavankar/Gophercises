@@ -15,7 +15,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestMain(t *testing.T) {
+func TestM(t *testing.T) {
 
 	tmp := ServeAndListenFunc
 	defer func() {
@@ -62,7 +62,7 @@ func CheckLinks(endpoint fn, method string, url string) string {
 }
 
 func TestGenerateImage(t *testing.T) {
-	file, err := os.Open("test.jpg")
+	file, err := os.Open("./img/testImages/971058115.png")
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -80,7 +80,7 @@ func TestUploadImage(t *testing.T) {
 	part, _ := writer.CreateFormFile("image", "test.jpg")
 	io.Copy(part, file)
 	writer.Close()
-	r, _ := http.NewRequest("POST", "localhost:9000/upload", body)
+	r, _ := http.NewRequest("POST", "localhost:5000/upload", body)
 	r.Header.Set("Content-Type", writer.FormDataContentType())
 
 	rr := httptest.NewRecorder()
@@ -109,7 +109,7 @@ func TestUploadImageNegative(t *testing.T) {
 	part, _ := writer.CreateFormFile("image", "test.jpg")
 	io.Copy(part, file)
 	writer.Close()
-	r, _ := http.NewRequest("POST", "localhost:9000/upload", body)
+	r, _ := http.NewRequest("POST", "localhost:5000/upload", body)
 
 	rr := httptest.NewRecorder()
 	handler := http.HandlerFunc(fn(uploadImage))
@@ -122,11 +122,11 @@ func TestUploadImageNegative(t *testing.T) {
 	part, _ = writer.CreateFormFile("image", "test./")
 	io.Copy(part, file)
 	writer.Close()
-	// r, _ = http.NewRequest("POST", "localhost:9000/upload", body)
-	// r.Header.Set("Content-Type", writer.FormDataContentType())
+	r, _ = http.NewRequest("POST", "localhost:5000/upload", body)
+	r.Header.Set("Content-Type", writer.FormDataContentType())
 
-	// rr = httptest.NewRecorder()
-	// handler = http.HandlerFunc(fn(uploadImage))
+	rr = httptest.NewRecorder()
+	handler = http.HandlerFunc(fn(uploadImage))
 	handler.ServeHTTP(rr, r)
 
 }
@@ -139,7 +139,7 @@ func TestUploadImageNegativeAdded(t *testing.T) {
 	part, _ := writer.CreateFormFile("image", "test.*")
 	io.Copy(part, file)
 	writer.Close()
-	r, _ := http.NewRequest("POST", "localhost:9000/upload", body)
+	r, _ := http.NewRequest("POST", "localhost:5000/upload", body)
 	r.Header.Set("Content-Type", writer.FormDataContentType())
 
 	rr := httptest.NewRecorder()
@@ -154,10 +154,12 @@ func TestUploadImageNegativeAdded(t *testing.T) {
 
 func TestModifyImage(t *testing.T) {
 	urls := []string{
-		"http://localhost:9000/modify/087884137.png?mode=3",
-		"http://localhost:9000/modify/407308789.png?mode=3&n=400",
-		"http://localhost:9000/modify/087884137.png",
-		"http://localhost:9000/modify/",
+		"http://localhost:5000/modify/158564789.png?mode=0",
+		"http://localhost:5000/modify/662057908.png?mode=0&n=20",
+		//		"http://localhost:5000/modify/016505040.jpg?mode=3",
+		//		"http://localhost:5000/modify/016505040.jpg?mode=3&n=400",
+		"http://localhost:5000/modify/271983558.png",
+		"http://localhost:5000/modify/",
 	}
 
 	for _, url := range urls {
@@ -167,7 +169,7 @@ func TestModifyImage(t *testing.T) {
 
 func TestModifyImageNegative(t *testing.T) {
 	tmp := StrconvAtoiFunc
-	CheckLinks(modifyImage, "POST", "http://localhost:9000/modify/407308789.png/?mode=*")
+	CheckLinks(modifyImage, "POST", "http://localhost:5000/modify/016505040.jpg/?mode=*")
 	StrconvAtoiFunc = tmp
 }
 func TestTempFile(t *testing.T) {
@@ -189,22 +191,8 @@ func TestGenImage(t *testing.T) {
 	genImages(file, "*", opts...)
 }
 
-func TestRenderNumShapeChoices(t *testing.T) {
-	req, err := http.NewRequest("GET", "http://localhost:9000/modify/407308789.png", nil)
-	if err != nil {
-		fmt.Println(err)
-	}
-	rr := httptest.NewRecorder()
-
-	file, err := os.Open("./img/testImages/971058115.png")
-	if err != nil {
-		fmt.Println(err)
-	}
-	renderNumShapeChoices(rr, req, file, "*", primitive.ModeBeziers)
-}
-
 func TestRenderModeChoices(t *testing.T) {
-	req, err := http.NewRequest("GET", "http://localhost:9000/modify/407308789.png", nil)
+	req, err := http.NewRequest("GET", "http://localhost:5000/modify/016505040.jpg", nil)
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -215,4 +203,18 @@ func TestRenderModeChoices(t *testing.T) {
 		fmt.Println(err)
 	}
 	renderModeChoices(rw, req, file, "*")
+}
+
+func TestRenderNumShapeChoices(t *testing.T) {
+	req, err := http.NewRequest("GET", "http://localhost:5000/modify/016505040.jpg", nil)
+	if err != nil {
+		fmt.Println(err)
+	}
+	rr := httptest.NewRecorder()
+
+	file, err := os.Open("./img/testImages/971058115.png")
+	if err != nil {
+		fmt.Println(err)
+	}
+	renderNumShapeChoices(rr, req, file, "*", primitive.ModeBeziers)
 }
