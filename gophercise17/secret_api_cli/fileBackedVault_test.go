@@ -1,11 +1,13 @@
 package secret_api_cli
 
 import (
+	"crypto/cipher"
+	"errors"
+	"io"
 	"path/filepath"
 	"testing"
 
 	"github.com/mitchellh/go-homedir"
-	"github.ibm.com/dash/dash_utils/dashtest"
 )
 
 func secretsPath() string {
@@ -61,6 +63,33 @@ func TestLoad(t *testing.T) {
 	v.load()
 }
 
-func TestMain(m *testing.M) {
-	dashtest.ControlCoverage(m)
+func TestLoadNegative(t *testing.T) {
+	encodingKey := "random-key"
+	v := File(encodingKey, secretsPath())
+	tmp := CipherDecryptReaderFunc
+	defer func() {
+		CipherDecryptReaderFunc = tmp
+	}()
+
+	CipherDecryptReaderFunc = func(key string, r io.Reader) (*cipher.StreamReader, error) {
+		return nil, errors.New("TEST ERROR")
+	}
+	v.load()
+	v.Set("test", "test")
+	v.Get(encodingKey)
+}
+
+func TestSaveNegative(t *testing.T) {
+	tmp := CipherEncryptWriter
+	defer func() {
+		CipherEncryptWriter = tmp
+	}()
+
+	CipherEncryptWriter = func(key string, w io.Writer) (*cipher.StreamWriter, error) {
+		return nil, errors.New("TEST ERROR")
+	}
+	encodingKey := "random-key"
+	v := File(encodingKey, secretsPath())
+	v.save()
+
 }

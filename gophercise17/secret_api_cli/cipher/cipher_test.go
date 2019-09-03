@@ -9,6 +9,7 @@ import (
 	"testing"
 
 	"github.com/mitchellh/go-homedir"
+	"github.ibm.com/dash/dash_utils/dashtest"
 )
 
 var encodingKey = "test-secret"
@@ -100,4 +101,8 @@ func TestDecryptStream(t *testing.T) {
 	}
 	decryptStream("test-key", []byte{10})
 	NewCipherBlockFunc = temp
+}
+
+func TestMain(m *testing.M) {
+	dashtest.ControlCoverage(m)
 }
